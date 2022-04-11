@@ -81,7 +81,7 @@ class scene extends Phaser.Scene {
     this.physics.add.collider(this.moves, this.platforms)
 
     this.player = new Player(this)
-/** gorupe des trou*/
+/** groupe des trous*/
 this.trous = this.physics.add.group({
     allowGravity: false,
     immovable: true
@@ -105,7 +105,7 @@ this.trous = this.physics.add.group({
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.cameras.main.startFollow(this.player.player);
-
+    this.cd = 0;
 
   }
 
@@ -161,5 +161,17 @@ this.trous = this.physics.add.group({
     } else {
       this.player.stop();
     }
+
+    this.cd +=1;
   }
+    /**
+    initKeyboard() {
+
+      jump(){
+          if(this.cd>=60){
+              jump(cd=0);
+          }
+        }
+  }
+     */
 }
