@@ -106,6 +106,7 @@ this.trous = this.physics.add.group({
     this.cursors = this.input.keyboard.createCursorKeys();
     this.cameras.main.startFollow(this.player.player);
     this.cd = 0;
+    this.cameras.main.setRoundPixels(true);
 
   }
 
