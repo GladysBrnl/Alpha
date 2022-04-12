@@ -73,18 +73,18 @@ class Player {
         }
     }
     jump(){
-        this.player.setVelocityY(-470);
+        this.player.setVelocityY(-500);
         this.player.play('jump', true);
         console.log(this.player.key)
     }
     moveRight(){
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(300);
         this.player.setFlipX(false);
         {
            }
     }
     moveLeft(){
-        this.player.setVelocityX(-200);
+        this.player.setVelocityX(-300);
         if (this.player.body.onFloor()) {
              }
         this.player.setFlipX(true);
