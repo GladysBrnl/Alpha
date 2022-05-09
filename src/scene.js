@@ -38,7 +38,7 @@ class scene extends Phaser.Scene {
     const map = this.make.tilemap({key: 'map'});
     const tileset = map.addTilesetImage('kenny_simple_platformer', 'tiles');
     this.platforms = map.createStaticLayer('Platformes', tileset, 0, 200);
-    this.platforms.setCollisionByProperty({collides:true})
+    this.platforms.setCollisionByProperty({collides:true});
 
 
 
