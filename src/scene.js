@@ -11,7 +11,7 @@ class scene extends Phaser.Scene {
     this.load.image('spike', 'assets/images/spike.png');
     this.load.image('move', 'assets/images/mouvable.png');
     this.load.image('save', 'assets/images/Save.png');
-    this.load.image('objlumi','assets/images/Objlumi');
+    this.load.image('luminion','assets/images/Objlumi.png');
     // At last image must be loaded with its JSON
     this.load.image('player', 'assets/images/beaute.png');
     this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
@@ -76,23 +76,30 @@ class scene extends Phaser.Scene {
       this.moveSprite = this.moves.create(move.x, move.y + 100 - move.height, 'move').setOrigin(0);
     });
 
+      /*this.spikes = this.scene.physics.add.group({
+          allowGravity: false,
+          immovable: true
+      });
+      map.getObjectLayer('Spikes').objects.forEach((spike) => {
+          const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
+          spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
+      });
+      /*this.scene.physics.add.collider(this.player.player, this.spikes, playerHit, null, this);*/
+
+      this.lumi = this.physics.add.group({
+          allowGravity: false,
+          immovable: false
+      });
+      map.getObjectLayer('Objlumi').objects.forEach((luminion) => {
+          this.lumiSprite = this.lumi.create(luminion.x, luminion.y + 200 - luminion.height, 'luminion').setOrigin(0);
+      })
+
 
 
     this.physics.add.collider(this.moves, this.moveSprite)
     this.physics.add.collider(this.moves, this.platforms)
 
-    this.player = new Player(this)
-/** groupe des trous*/
-this.trous = this.physics.add.group({
-    allowGravity: false,
-    immovable: true
-});
-// ceci permet au images que vous avez placé sur Tiled d'avoir une boite de colision mais aussi d'etre invisible
-      map.getObjectLayer('Trous').objects.forEach((spike) => {
-          //si vous utilisez une autre image que les piques remplacez le 'spike' avec le nom de l'image que vous avez remplacé (le nom déclaré dans preload)
-          const trousSprite = this.trous.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0).visible = false ;
-      });
-    this.physics.add.collider(this.player.player, this.trous, this.playerHit, null, this);
+    this.player = new Player(this);
 
     /** groupe des saves*/
     this.saves = this.physics.add.group({
@@ -123,21 +130,6 @@ this.trous = this.physics.add.group({
     this.currentKey = player.key
   }
 
-  playerHit(player, spike) {
-    player.setVelocity(0, 0);
-    player.x = this.currentSaveX
-    player.y = this.currentSaveY;
-    player.key= this.currentKey
-    player.play('idle', true);
-    player.setAlpha(0);
-    let tw = this.tweens.add({
-      targets: player,
-      alpha: 1,
-      duration: 100,
-      ease: 'Linear',
-      repeat: 5,
-    });
-  }
 
 
   update() {
