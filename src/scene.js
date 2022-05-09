@@ -108,6 +108,7 @@ this.trous = this.physics.add.group({
     this.cameras.main.startFollow(this.player.player);
     this.cameras.main.setRoundPixels(true);
 
+    /**groupe des objets et plateformes de lumières*/
   }
 
   /**
