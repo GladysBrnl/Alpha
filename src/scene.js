@@ -76,7 +76,7 @@ class scene extends Phaser.Scene {
       this.moveSprite = this.moves.create(move.x, move.y + 100 - move.height, 'move').setOrigin(0);
     });
 
-      /*this.spikes = this.scene.physics.add.group({
+      this.spikes = this.scene.physics.add.group({
           allowGravity: false,
           immovable: true
       });
@@ -84,7 +84,7 @@ class scene extends Phaser.Scene {
           const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
           spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
       });
-      /*this.scene.physics.add.collider(this.player.player, this.spikes, playerHit, null, this);*/
+      this.scene.physics.add.collider(this.player.player, this.spikes, playerHit, null, this);
 
       this.lumi = this.physics.add.group({
           allowGravity: false,
