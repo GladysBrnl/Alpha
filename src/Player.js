@@ -6,7 +6,7 @@ class Player {
         this.player = this.scene.physics.add.sprite(300, 2980, 'player');
         this.player.key=0
         this.player.setBounce(0.1).setVelocityX(0);
-        this.scene.physics.add.collider(this.player, this.scene.platforms);
+        this.scene.physics.add.collider(this.player, this.scene.collide);
         /*
         this.scene.anims.create({
             key: 'walk',

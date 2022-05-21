@@ -15,6 +15,8 @@ class scene extends Phaser.Scene {
     // At last image must be loaded with its JSON
     this.load.image('player', 'assets/images/beaute.png');
     this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
+    this.load.image('tilesassets', 'assets/tilesets/tileasset.png');
+    this.load.image('col', 'assets/images/ech.png');
     // Load the export Tiled JSON
     this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
   }
@@ -37,9 +39,19 @@ class scene extends Phaser.Scene {
     backgroundImage.setScale(2, 0.8);
     const map = this.make.tilemap({key: 'map'});
     const tileset = map.addTilesetImage('kenny_simple_platformer', 'tiles');
-    this.platforms = map.createStaticLayer('Platformes', tileset, 0, 200);
-    this.platforms.setCollisionByProperty({collides:true});
+    const tilesetP1 = map.addTilesetImage('AssetTile', 'tilesassets');
+    this.platforms = map.createLayer('Platformes', tileset, 0, 200);
+    this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
 
+      //Collide
+
+      this.collide = this.physics.add.group({
+          allowGravity: false,
+          immovable: true,
+      });
+      map.getObjectLayer('blocage').objects.forEach((col) => {
+          this.collideSprite = this.collide.create(col.x, col.y+200, col.height).setOrigin(0).setDisplaySize(col.width,col.height).visible=false;
+      });
 
 
     /**
@@ -84,20 +96,16 @@ class scene extends Phaser.Scene {
           const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
           spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
       });
+
     /* this.physics.add.collider(this.player.player, this.spikes, null, this);*/
 
-      this.lumi = this.physics.add.group({
-          allowGravity: false,
-          immovable: false
-      });
-      map.getObjectLayer('Objlumi').objects.forEach((luminion) => {
-          this.lumiSprite = this.lumi.create(luminion.x, luminion.y + 200 - luminion.height, 'luminion').setOrigin(0);
-      })
+
+
 
 
 
     this.physics.add.collider(this.moves, this.moveSprite)
-    this.physics.add.collider(this.moves, this.platforms)
+    this.physics.add.collider(this.moves, this.collide)
 
     this.player = new Player(this);
 
