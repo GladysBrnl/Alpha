@@ -42,6 +42,7 @@ class scene extends Phaser.Scene {
     const tilesetP1 = map.addTilesetImage('AssetTile', 'tilesassets');
     //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
     this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
+    this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
     this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
 
       //Collide
@@ -69,7 +70,7 @@ class scene extends Phaser.Scene {
     map.getObjectLayer('Door').objects.forEach((doors)=>{
       const DoorSprite = this.doors.create(doors.x, doors.y +9+ doors.height, 'door').setOrigin(0).key=1;
     });
-    this.debug=this.doors.children.entries[1].key=3//cette porte nécessite 3 clefs
+
 
 /** groupe des clefs */
     this.key=this.physics.add.group({
