@@ -52,6 +52,7 @@ class scene extends Phaser.Scene {
       map.getObjectLayer('blocage').objects.forEach((col) => {
           this.collideSprite = this.collide.create(col.x, col.y+200, col.height).setOrigin(0).setDisplaySize(col.width,col.height).visible=false;
       });
+      this.physics.add.collider(this.collide, this.collideSprite)
 
 
     /**
@@ -81,14 +82,16 @@ class scene extends Phaser.Scene {
 
 /** groupe des objets déplaçable*/
     this.moves = this.physics.add.group({
-      allowGravity: true,
+      allowGravity: false,
       immovable: false
     });
     map.getObjectLayer('Mouvable').objects.forEach((move) => {
-      this.moveSprite = this.moves.create(move.x, move.y + 100 - move.height, 'move').setOrigin(0);
+      this.moveSprite = this.moves.create(move.x, move.y + 200 - move.height, 'move').setOrigin(0);
     });
+      this.physics.add.collider(this.moves, this.moveSprite)
+      this.physics.add.collider(this.moves, this.collide)
 
-     this.spikes = this.physics.add.group({
+      this.spikes = this.physics.add.group({
           allowGravity: false,
           immovable: true
       });
