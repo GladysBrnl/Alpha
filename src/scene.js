@@ -40,7 +40,8 @@ class scene extends Phaser.Scene {
     const map = this.make.tilemap({key: 'map'});
     const tileset = map.addTilesetImage('kenny_simple_platformer', 'tiles');
     const tilesetP1 = map.addTilesetImage('AssetTile', 'tilesassets');
-    this.platforms = map.createLayer('Platformes', tileset, 0, 200);
+    //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
+    this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
     this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
 
       //Collide
