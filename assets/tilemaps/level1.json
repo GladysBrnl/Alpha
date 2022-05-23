@@ -1882,7 +1882,7 @@
                  "y":785.333333333333
                 }, 
                 {
-                 "height":68.0000000000001,
+                 "height":26.6666666666667,
                  "id":224,
                  "name":"",
                  "rotation":0,
@@ -1937,7 +1937,7 @@
                  "y":1216
                 }, 
                 {
-                 "height":64,
+                 "height":45.3333333333335,
                  "id":229,
                  "name":"",
                  "rotation":0,
@@ -1945,10 +1945,10 @@
                  "visible":true,
                  "width":256,
                  "x":11328,
-                 "y":1024
+                 "y":1042.66666666667
                 }, 
                 {
-                 "height":64,
+                 "height":47.9999999999998,
                  "id":230,
                  "name":"",
                  "rotation":0,
@@ -1956,7 +1956,7 @@
                  "visible":true,
                  "width":320,
                  "x":10944,
-                 "y":1216
+                 "y":1232
                 }, 
                 {
                  "height":64,
@@ -2102,7 +2102,7 @@
                  "y":1728
                 }, 
                 {
-                 "height":64,
+                 "height":52,
                  "id":244,
                  "name":"",
                  "rotation":0,
@@ -2110,7 +2110,18 @@
                  "visible":true,
                  "width":384,
                  "x":13056,
-                 "y":1600
+                 "y":1612
+                }, 
+                {
+                 "height":52,
+                 "id":365,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":384,
+                 "x":13056,
+                 "y":1612
                 }, 
                 {
                  "height":64,
@@ -2581,10 +2592,10 @@
          "y":0
         }],
  "nextlayerid":25,
- "nextobjectid":365,
+ "nextobjectid":366,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.1",
+ "tiledversion":"1.8.2",
  "tileheight":64,
  "tilesets":[
         {
