@@ -38,13 +38,20 @@ class Player {
         this.scene.physics.add.overlap(this.player, this.scene.key,this.getKey,null,this)
 
     }
+
+    /**
+     *
+     * @private
+     * @param player
+     * @param moves
+     */
     force(player,moves){
         if(player.body.touching.left || player.body.touching.right) {
-            moves.setImmovable(false)
+            //moves.setImmovable(false)
             this.pousse = true
         }
         if(player.body.touching.down){
-            moves.setImmovable()
+            //moves.setImmovable()
             this.player.body.blocked.down=true //ici on fais croire a phaser que le sprite est static pour pouvoir sauter dessus (uniquement valable pour utiliser la fonction onFloor())
         }
     }
