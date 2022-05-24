@@ -12,7 +12,7 @@ class Player {
         this.scene.anims.create({
             key: 'run',
             frames: this.scene.anims.generateFrameNames('player', {
-                prefix: 'robo_player_',// anim_course
+                prefix: 'Anim-course',
                 start: 1,
                 end: 6,
             }),
