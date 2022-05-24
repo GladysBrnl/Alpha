@@ -23,13 +23,16 @@ class scene extends Phaser.Scene {
 
 
     create() {
+
+        this.currentSaveX = 0;
+        this.currentSaveY = 0;
+        this.currentPoints = 0;
+
         /**
          * on initialise les valeurs de la sauvegarde
          * @type {number}
          */
-        this.currentSaveX = 0;
-        this.currentSaveY = 0;
-        this.currentKey= 0;
+
         /**
          * creation de la map et du  layer plateforme
          * @type {Phaser.GameObjects.Image}
@@ -43,6 +46,7 @@ class scene extends Phaser.Scene {
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
+        //this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
 
@@ -97,6 +101,7 @@ class scene extends Phaser.Scene {
         });
 
         //this.physics.add.collider(this.moves, this.collide)
+        this.player = new Player(this);
 
         this.spikes = this.physics.add.group({
             allowGravity: false,
@@ -105,12 +110,15 @@ class scene extends Phaser.Scene {
         map.getObjectLayer('Spikes').objects.forEach((spike) => {
             const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
             spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
+            this.spikes.add(spikeSprite)
         });
 
-        /* this.physics.add.collider(this.player.player, this.spikes, null, this);*/
+        this.physics.add.collider(this.player.player, this.spikes, this.death, null, this);
 
 
-        this.player = new Player(this);
+
+
+
 
         /** groupe des saves*/
         this.saves = this.physics.add.group({
@@ -119,8 +127,11 @@ class scene extends Phaser.Scene {
         });
         map.getObjectLayer('Save').objects.forEach((save) => {
             const saveSprite = this.saves.create(save.x, save.y + 200 - save.height, 'save').setOrigin(0);
+            this.physics.add.overlap(this.player.player, this.saves, this.sauvegarde, null, this)
         });
-        this.physics.add.overlap(this.player.player, this.saves, this.sauvegarde, null, this)
+
+
+
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.cameras.main.startFollow(this.player.player);
@@ -134,15 +145,20 @@ class scene extends Phaser.Scene {
      * @param player
      * @param saves
      */
+
     sauvegarde(player, saves) {
-        console.log("current", this.currentSaveX, this.currentSaveY)
         this.currentSaveX = player.x
         this.currentSaveY = player.y
-        saves.body.enable = false;
-        this.currentKey = player.key
+        console.log("coucou");
     }
 
-
+    death(player, spikes)
+    {
+        player.x = this.currentSaveX
+        player.y = this.currentSaveY;
+        player.setVelocity(0);
+        console.log("pute");
+    }
 
     update() {
         if (this.player.pousse ){
@@ -166,6 +182,8 @@ class scene extends Phaser.Scene {
         } else {
             this.player.stop();
         }
+
+
 
     }
 
