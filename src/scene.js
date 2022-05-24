@@ -28,6 +28,8 @@ class scene extends Phaser.Scene {
         this.currentSaveY = 0;
         this.currentPoints = 0;
 
+        this.saut = false;
+
         /**
          * on initialise les valeurs de la sauvegarde
          * @type {number}
@@ -171,10 +173,15 @@ class scene extends Phaser.Scene {
 
 
 
-        if ((this.cursors.space.isDown || this.cursors.up.isDown) && this.player.player.body.onFloor()) {
+        if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
             this.player.jump()
             console.log("oui")
+            this.saut = true;
         }
+        if (this.cursors.up.isUp ){
+            this.saut = false;
+        }
+
         if (this.cursors.left.isDown) {
             this.player.moveLeft()
         } else if (this.cursors.right.isDown) {
