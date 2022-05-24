@@ -8,9 +8,9 @@ class Player {
 
         this.player.setBounce(0.1).setVelocityX(0);
         this.scene.physics.add.collider(this.player, this.scene.collide);
-        /*
+
         this.scene.anims.create({
-            key: 'walk',
+            key: 'run',
             frames: this.scene.anims.generateFrameNames('player', {
                 prefix: 'robo_player_',
                 start: 2,
@@ -19,6 +19,7 @@ class Player {
             frameRate: 10,
             repeat: -1
         });
+        /*
         this.scene.anims.create({
             key: 'idle',
             frames: [{key: 'player', frame: 'robo_player_0'}],
