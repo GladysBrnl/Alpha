@@ -48,6 +48,7 @@ class scene extends Phaser.Scene {
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
+        this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
         //this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
@@ -159,7 +160,7 @@ class scene extends Phaser.Scene {
         player.setVelocity(0);
         player.x = this.currentSaveX
         player.y = this.currentSaveY;
-        
+
         console.log("pute");
     }
 
