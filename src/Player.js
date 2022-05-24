@@ -12,9 +12,9 @@ class Player {
         this.scene.anims.create({
             key: 'run',
             frames: this.scene.anims.generateFrameNames('player', {
-                prefix: 'robo_player_',
-                start: 2,
-                end: 3,
+                prefix: 'robo_player_',// anim_course
+                start: 1,
+                end: 6,
             }),
             frameRate: 10,
             repeat: -1
@@ -88,12 +88,14 @@ class Player {
     }
     moveRight(){
         this.player.setVelocityX(300);
+        this.player.play('run', true);
         this.player.setFlipX(false);
         {
            }
     }
     moveLeft(){
         this.player.setVelocityX(-300);
+       // this.player.play('run', true);
         if (this.player.body.onFloor()) {
              }
         this.player.setFlipX(true);
