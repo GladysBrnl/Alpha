@@ -156,9 +156,10 @@ class scene extends Phaser.Scene {
 
     death(player, spikes)
     {
+        player.setVelocity(0);
         player.x = this.currentSaveX
         player.y = this.currentSaveY;
-        player.setVelocity(0);
+        
         console.log("pute");
     }
 
