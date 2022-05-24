@@ -19,6 +19,10 @@ class scene extends Phaser.Scene {
         this.load.image('col', 'assets/images/ech.png');
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
+
+        for (let i = 1; i <= 3; i++){
+            this.load.image('pics' + 1, "asset/images/pic" + i +'.png');
+        }
     }
 
 
@@ -111,7 +115,7 @@ class scene extends Phaser.Scene {
             immovable: true
         });
         map.getObjectLayer('Spikes').objects.forEach((spike) => {
-            const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
+            const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'pic1').setOrigin(0);
             spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
             this.spikes.add(spikeSprite)
         });
