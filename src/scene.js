@@ -192,21 +192,43 @@ class scene extends Phaser.Scene {
         // if (this.cursors.up.isUp ){
         //     this.saut = false;
         // }
-        if (this.cursors.up.isDown) {
-            this.player.jump()
-        }
-        if (this.cursors.left.isDown) {
-            this.player.moveLeft()
-        } else if (this.cursors.right.isDown) {
-            this.player.moveRight()
-        }
-        else {
-            this.player.stop();
-        }
+        // if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
+        //     this.player.jump()
+        // }
+        // if (this.cursors.left.isDown) {
+        //     this.player.moveLeft()
+        // } else if (this.cursors.right.isDown) {
+        //     this.player.moveRight()
+        // }
+        // else {
+        //     this.player.stop();
+        // }
+        switch (true) {
 
+            case (this.cursors.space.isDown || this.cursors.up.isDown) && this.player.player.body.onFloor():
+                this.player.jump()
+                break;
+            case this.cursors.left.isDown:
+                this.player.moveLeft();
+                break;
 
+            case this.cursors.right.isDown:
+                this.player.moveRight();
+                break;
 
+            // case this.cursors.down.isDown:
+            // this.bosslife=0;
+            // break;
+            default:
+                this.player.stop();
+            //this.marche.stop();
+
+        }
     }
+
+
+
+
 
 
 }
