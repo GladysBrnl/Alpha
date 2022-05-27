@@ -25,6 +25,9 @@ class scene extends Phaser.Scene {
         for (let r=1; r<=6; r++){
             this.load.image('course'+r,'assets/images/course'+r+'.png')
         }
+        for (let s=1; s<=9; s++){
+            this.load.image('saut'+s,'assets/images/saut'+s+'.png')
+        }
     }
 
 
@@ -194,7 +197,8 @@ class scene extends Phaser.Scene {
             this.player.moveLeft()
         } else if (this.cursors.right.isDown) {
             this.player.moveRight()
-        } else {
+        }
+        else {
             this.player.stop();
         }
 

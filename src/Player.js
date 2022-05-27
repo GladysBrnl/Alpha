@@ -22,6 +22,23 @@ class Player {
             frameRate: 10,
             repeat: -1
         });
+
+        this.scene.anims.create({
+            key: 'saut',
+            frames:[
+                {key: 'saut1'},
+                {key: 'saut2'},
+                {key: 'saut3'},
+                {key: 'saut4'},
+                {key: 'saut5'},
+                {key: 'saut6'},
+                {key: 'saut7'},
+                {key: 'saut8'},
+                {key: 'saut9'},
+            ],
+            frameRate: 5,
+            repeat: 0
+        })
         /*
         this.scene.anims.create({
             key: 'idle',
@@ -86,26 +103,29 @@ class Player {
     }
     jump(){
         this.player.setVelocityY(-500);
-        this.player.play('jump', true);
+        this.player.play('saut', true);
         console.log(this.player.key)
     }
     moveRight(){
         this.player.setVelocityX(300);
-        this.player.setFlipX(false);
-        {
+        if (this.player.body.onFloor()) {
+
             this.player.play('course', true);
-           }
+        }
+        this.player.setFlipX(false);
     }
     moveLeft(){
         this.player.setVelocityX(-300);
        // this.player.play('run', true);
         if (this.player.body.onFloor()) {
+            this.player.play('course', true);
              }
         this.player.setFlipX(true);
     }
     stop(){
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
+            //this.player.add.sprite('beaute')
 
             }
     }
