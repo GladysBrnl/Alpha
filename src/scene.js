@@ -20,6 +20,11 @@ class scene extends Phaser.Scene {
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
         this.load.image('pic1', "assets/images/pic1.png");
+        //Load anims
+
+        for (let r=1; r<=6; r++){
+            this.load.image('course'+r,'assets/images/course'+r+'.png')
+        }
     }
 
 

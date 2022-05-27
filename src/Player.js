@@ -10,12 +10,15 @@ class Player {
         this.scene.physics.add.collider(this.player, this.scene.collide);
 
         this.scene.anims.create({
-            key: 'run',
-            frames: this.scene.anims.generateFrameNames('player', {
-                prefix: 'Anim-course',
-                start: 1,
-                end: 6,
-            }),
+            key: 'course',
+            frames: [
+                {key: 'course1'},
+                {key: 'course2'},
+                {key: 'course3'},
+                {key: 'course4'},
+                {key: 'course5'},
+                {key: 'course6'},
+            ],
             frameRate: 10,
             repeat: -1
         });
@@ -88,9 +91,9 @@ class Player {
     }
     moveRight(){
         this.player.setVelocityX(300);
-        this.player.play('run', true);
         this.player.setFlipX(false);
         {
+            this.player.play('course', true);
            }
     }
     moveLeft(){
