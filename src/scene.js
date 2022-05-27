@@ -184,15 +184,17 @@ class scene extends Phaser.Scene {
 
 
 
-        if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
+        // if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
+        //     this.player.jump()
+        //     console.log("oui")
+        //     this.saut = true;
+        // }
+        // if (this.cursors.up.isUp ){
+        //     this.saut = false;
+        // }
+        if (this.cursors.up.isDown) {
             this.player.jump()
-            console.log("oui")
-            this.saut = true;
         }
-        if (this.cursors.up.isUp ){
-            this.saut = false;
-        }
-
         if (this.cursors.left.isDown) {
             this.player.moveLeft()
         } else if (this.cursors.right.isDown) {
