@@ -55,9 +55,12 @@ class scene extends Phaser.Scene {
         const tileset = map.addTilesetImage('kenny_simple_platformer', 'tiles');
         const tilesetP1 = map.addTilesetImage('AssetTile', 'tilesassets');
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
+        this.fond = map.createLayer('Fond', tilesetP1, 0, 200);
+        this.fond2 = map.createLayer('Fondforet', tilesetP1, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
         this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
+
         //this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
