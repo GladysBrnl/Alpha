@@ -8,18 +8,20 @@ class scene extends Phaser.Scene {
         this.load.image('background', 'assets/images/background.png');
         this.load.image('door', 'assets/images/Door.png');
         this.load.image('key', 'assets/images/Key.png');
-        this.load.image('spike', 'assets/images/pic1.png');
+        this.load.image('spike', 'assets/images/spike.png');
         this.load.image('move', 'assets/images/mouvable.png');
         this.load.image('save', 'assets/images/Save.png');
         this.load.image('luminion','assets/images/Objlumi.png');
+        this.load.image('luciole1', 'assets/images/blue.png');
         // At last image must be loaded with its JSON
+        this.load.image('pic1', "assets/images/pic1.png");
         this.load.image('player', 'assets/images/beaute.png');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         this.load.image('tilesassets', 'assets/tilesets/tileasset.png');
         //this.load.image('col', 'assets/images/ech.png');
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
-        this.load.image('pic1', "assets/images/pic1.png");
+
         //Load anims
 
         for (let r=1; r<=6; r++){
@@ -151,6 +153,28 @@ class scene extends Phaser.Scene {
         this.cameras.main.startFollow(this.player.player);
         this.cameras.main.setRoundPixels(true);
        // this.main.stopFollow();
+
+        // Création de tout les emmiters
+        //Luciole1
+        this.configFX1 = {
+            rotate: {min:0,max:360},
+            scale: {start: 0.2, end: 0.5},
+            alpha: { start: 1, end: 0 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:12
+        };
+        this.luciole1 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+
+        map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
+            this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
+            this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
+            this.luciole1SpriteFX.createEmitter(this.configFX1)
+            this.luciole1SpriteFX.x = this.luciole1Sprite.x
+            this.luciole1SpriteFX.y = this.luciole1Sprite.y
+        });
 
     }
 
