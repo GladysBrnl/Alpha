@@ -18,7 +18,7 @@ class Player {
                 {key: 'course3'},
                 {key: 'course4'},
                 {key: 'course5'},
-                {key: 'course6'},
+                //{key: 'course6'},
             ],
             frameRate: 10,
             repeat: -1
