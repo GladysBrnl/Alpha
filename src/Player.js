@@ -5,6 +5,7 @@ class Player {
         this.pousse=false
         this.player = this.scene.physics.add.sprite(300, 3520, 'player');
         this.player.key=0
+        this.player.body.setSize(80, 200);
 
         this.player.setBounce(0.1).setVelocityX(0);
         this.scene.physics.add.collider(this.player, this.scene.collide);
