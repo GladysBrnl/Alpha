@@ -8,7 +8,7 @@ class scene extends Phaser.Scene {
         this.load.image('background', 'assets/images/background.png');
         this.load.image('door', 'assets/images/Door.png');
         this.load.image('key', 'assets/images/Key.png');
-        this.load.image('spike', 'assets/images/spike.png');
+        this.load.image('spike', 'assets/images/pic1.png');
         this.load.image('move', 'assets/images/mouvable.png');
         this.load.image('save', 'assets/images/Save.png');
         this.load.image('luminion','assets/images/Objlumi.png');
@@ -61,7 +61,6 @@ class scene extends Phaser.Scene {
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
         this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
-        //this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
 
