@@ -196,12 +196,12 @@ class scene extends Phaser.Scene {
         //Luciole2
 
         this.configFX2 = {
-            lifespan: 150,
+            lifespan: 250,
             angle: { start: 360, end: 0, steps: 10 },
             speed: 10,
-            scale: { start: 0.1, end: 0.2 },
-            frequency: 30,
-            alpha: {start: 0.2,end: 0.2},
+            scale: { start: 0.1, end: 0.5 },
+            frequency: 35,
+            alpha: {start: 0.2,end: 0.3},
             blendMode: 'ADD'
         };
         this.luciole2 = this.physics.add.group({
