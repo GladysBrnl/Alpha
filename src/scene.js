@@ -64,7 +64,7 @@ class scene extends Phaser.Scene {
         this.fond2 = map.createLayer('Fondforet', tilesetP1, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
-        this.plan11 = map.createLayer('Plan1.1', tilesetP1, 0, 200);
+        this.plan = map.createLayer('Plan1.1', tilesetP1, 0, 200);
 
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
