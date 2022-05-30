@@ -13,6 +13,7 @@ class scene extends Phaser.Scene {
         this.load.image('save', 'assets/images/Save.png');
         this.load.image('luminion','assets/images/Objlumi.png');
         this.load.image('luciole1', 'assets/images/blue.png');
+        this.load.image('luciole2', 'assets/images/yellow.png');
         // At last image must be loaded with its JSON
         this.load.image('pic1', "assets/images/pic1.png");
         this.load.image('player', 'assets/images/beaute.png');
@@ -157,11 +158,11 @@ class scene extends Phaser.Scene {
         // Création de tout les emmiters
         //Luciole1
         this.configFX1 = {
-            rotate: {min:0,max:360},
-            scale: {start: 0.2, end: 0.5},
-            alpha: { start: 1, end: 0 },
+            rotate: {min:0,max:180},
+            scale: {start: 0.1, end: 0.5},
+            alpha: { start: 0.1, end: 2 },
             blendMode: Phaser.BlendModes.ADD,
-            speed:12
+            speed:5
         };
         this.luciole1 = this.physics.add.group({
             allowGravity: false,
@@ -174,6 +175,30 @@ class scene extends Phaser.Scene {
             this.luciole1SpriteFX.createEmitter(this.configFX1)
             this.luciole1SpriteFX.x = this.luciole1Sprite.x
             this.luciole1SpriteFX.y = this.luciole1Sprite.y
+        });
+
+        //Luciole2
+
+        this.configFX2 = {
+            lifespan: 250,
+            angle: { start: 360, end: 0, steps: 0 },
+            speed: 100,
+            scale: { start: 0.1, end: 0 },
+            frequency: 20,
+            blendMode: 'ADD'
+        };
+        this.luciole2 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+
+
+        map.getObjectLayer('Luciole2').objects.forEach((luciole2) => {
+            this.luciole2Sprite = this.luciole2.create(luciole2.x, luciole2.y + 200 - luciole2.height, 'luciole2');
+            this.luciole2SpriteFX = this.add.particles('luciole2')//On charge les particules à appliquer au layer
+            this.luciole2SpriteFX.createEmitter(this.configFX2)
+            this.luciole2SpriteFX.x = this.luciole2Sprite.x
+            this.luciole2SpriteFX.y = this.luciole2Sprite.y
         });
 
     }
