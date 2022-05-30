@@ -14,6 +14,7 @@ class scene extends Phaser.Scene {
         this.load.image('luminion','assets/images/Objlumi.png');
         this.load.image('luciole1', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
+        this.load.atlas('flares','assets/images/flares.png','assets/images/flares.json');
         // At last image must be loaded with its JSON
         this.load.image('pic1', "assets/images/pic1.png");
         this.load.image('player', 'assets/images/beaute.png');
@@ -22,6 +23,7 @@ class scene extends Phaser.Scene {
         //this.load.image('col', 'assets/images/ech.png');
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
+
 
         //Load anims
 
@@ -156,35 +158,37 @@ class scene extends Phaser.Scene {
        // this.main.stopFollow();
 
         // Création de tout les emmiters
-        //Luciole1
-        this.configFX1 = {
-            rotate: {min:0,max:180},
-            scale: {start: 0.1, end: 0.5},
-            alpha: { start: 0.1, end: 2 },
-            blendMode: Phaser.BlendModes.ADD,
-            speed:5
-        };
-        this.luciole1 = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-
-        map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
-            this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
-            this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
-            this.luciole1SpriteFX.createEmitter(this.configFX1)
-            this.luciole1SpriteFX.x = this.luciole1Sprite.x
-            this.luciole1SpriteFX.y = this.luciole1Sprite.y
-        });
+        // //Luciole1
+        // this.configFX1 = {
+        //     rotate: {min:0,max:280},
+        //     scale: {start: 2, end: 4},
+        //     alpha: { start: 0, end: 0.1 },
+        //     blendMode: Phaser.BlendModes.ADD,
+        //     speed:1000,
+        //     tint: 0xFFFFE0,
+        // };
+        // this.luciole1 = this.physics.add.group({
+        //     allowGravity: false,
+        //     immovable: true
+        // });
+        //
+        // map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
+        //     this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
+        //     this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
+        //     this.luciole1SpriteFX.createEmitter(this.configFX1)
+        //     this.luciole1SpriteFX.x = this.luciole1Sprite.x
+        //     this.luciole1SpriteFX.y = this.luciole1Sprite.y
+        // });
 
         //Luciole2
 
         this.configFX2 = {
-            lifespan: 250,
-            angle: { start: 360, end: 0, steps: 0 },
-            speed: 100,
-            scale: { start: 0.1, end: 0 },
-            frequency: 20,
+            lifespan: 150,
+            angle: { start: 360, end: 0, steps: 10 },
+            speed: 10,
+            scale: { start: 0.1, end: 0.2 },
+            frequency: 30,
+            alpha: {start: 0.2,end: 0.002},
             blendMode: 'ADD'
         };
         this.luciole2 = this.physics.add.group({
@@ -199,6 +203,36 @@ class scene extends Phaser.Scene {
             this.luciole2SpriteFX.createEmitter(this.configFX2)
             this.luciole2SpriteFX.x = this.luciole2Sprite.x
             this.luciole2SpriteFX.y = this.luciole2Sprite.y
+        });
+
+
+        //Atmo1
+
+        this.configFX3 = {
+            lifespan: 4500,
+            rotate: {min:90,max:360},
+            angle: {min:90 , max: 360},
+            scale: {start: 0.9, end: 2},
+            gravityX: -300,
+            gravityY:0,
+
+            alpha: { start: 0.03, end: 0.008 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:40,
+            tint: 0x808080,
+        };
+        this.tmo1 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+
+
+        map.getObjectLayer('atmo1').objects.forEach((tmo1) => {
+            this.atmo1Sprite = this.tmo1.create(tmo1.x, tmo1.y + 200 - tmo1.height, 'flares');
+            this.atmo1SpriteFX = this.add.particles('flares')//On charge les particules à appliquer au layer
+            this.atmo1SpriteFX.createEmitter(this.configFX3)
+            this.atmo1SpriteFX.x = this.atmo1Sprite.x
+            this.atmo1SpriteFX.y = this.atmo1Sprite.y
         });
 
     }
