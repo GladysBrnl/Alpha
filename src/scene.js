@@ -16,7 +16,7 @@ class scene extends Phaser.Scene {
         this.load.image('player', 'assets/images/beaute.png');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
         this.load.image('tilesassets', 'assets/tilesets/tileasset.png');
-        this.load.image('col', 'assets/images/ech.png');
+        //this.load.image('col', 'assets/images/ech.png');
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
         this.load.image('pic1', "assets/images/pic1.png");
