@@ -222,16 +222,16 @@ class scene extends Phaser.Scene {
         //Atmo1
 
         this.configFX3 = {
-            lifespan: 4500,
+            lifespan: 4000,
             rotate: {min:90,max:360},
             angle: {min:90 , max: 360},
-            scale: {start: 0.9, end: 2},
+            scale: {start: 2, end: 2},
             gravityX: -300,
             gravityY:0,
 
-            alpha: { start: 0.03, end: 0.008 },
+            alpha: { start: 0.04, end: 0.04 },
             blendMode: Phaser.BlendModes.ADD,
-            speed:40,
+            speed:50,
             tint: 0x808080,
         };
         this.tmo1 = this.physics.add.group({
