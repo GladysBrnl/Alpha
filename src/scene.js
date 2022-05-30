@@ -62,12 +62,25 @@ class scene extends Phaser.Scene {
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
         this.fond = map.createLayer('Fond', tilesetP1, 0, 200);
         this.fond2 = map.createLayer('Fondforet', tilesetP1, 0, 200);
+        this.plan3 = map.createLayer('Plan3', tilesetP1, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
-        this.plan = map.createLayer('Plan1.1', tilesetP1, 0, 200);
+
 
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
+        this.plan = map.createLayer('Plan1bis', tilesetP1, 0, 200);
+
+        //Parallax
+
+        this.fond.scrollFactorX=1.035;
+        this.fond2.scrollFactorX=1.035;
+        this.plan3.scrollFactorX=1.03;
+        this.plan2.scrollFactorX=1.02;
+        this.plan1.scrollFactorX=1.00;
+        this.plan.scrollFactorX=1.00;
+        this.feuilles.scrollFactorX=1.00;
+
 
         //Collide
 
@@ -188,7 +201,7 @@ class scene extends Phaser.Scene {
             speed: 10,
             scale: { start: 0.1, end: 0.2 },
             frequency: 30,
-            alpha: {start: 0.2,end: 0.002},
+            alpha: {start: 0.2,end: 0.2},
             blendMode: 'ADD'
         };
         this.luciole2 = this.physics.add.group({
