@@ -258,20 +258,23 @@ class scene extends Phaser.Scene {
 
         //Torche
         this.configFX4 = {
-                rotate: {min:0,max:280},
-                scale: {start: 2, end: 4},
-                alpha: { start: 0, end: 0.1 },
+                //rotate: {min:0,max:280},
+                 angle: {min:0 , max: 360},
+                scale: {start: 0.5, end: 1},
+                gravityX:0,
+                gravityY: -300,
+                alpha: { start: 0.5, end: 0 },
                 blendMode: Phaser.BlendModes.ADD,
-                speed:1000,
+                speed:25,
                 tint: 0xFFFFE0,
             };
-            this.torche = this.physics.add.group({
+            this.torches = this.physics.add.group({
                 allowGravity: false,
                 immovable: true
             });
 
-            map.getObjectLayer('Torches').objects.forEach((torche) => {
-                this.torcheSprite = this.torche.create(torche.x, torche.y + 200 - torche.height, 'torche');
+            map.getObjectLayer('Torches').objects.forEach((torches) => {
+                this.torcheSprite = this.torches.create(torches.x, torches.y + 200 - torches.height, 'torche');
                 this.torcheSpriteFX = this.add.particles('torche')//On charge les particules à appliquer au layer
                 this.torcheSpriteFX.createEmitter(this.configFX4)
                 this.torcheSpriteFX.x = this.torcheSprite.x
