@@ -316,12 +316,12 @@ class scene extends Phaser.Scene {
                 break;
             case this.cursors.left.isDown:
                 this.player.moveLeft();
-                this.player.player.setOffset(20,0);
+                this.player.player.setOffset(10,0);
                 break;
 
             case this.cursors.right.isDown:
                 this.player.moveRight();
-                this.player.player.setOffset(20,0);
+                this.player.player.setOffset(25,0);
                 break;
 
             // case this.cursors.down.isDown:
