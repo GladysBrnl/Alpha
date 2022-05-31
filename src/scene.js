@@ -61,8 +61,9 @@ class scene extends Phaser.Scene {
         const tilesetP1 = map.addTilesetImage('AssetTile', 'tilesassets');
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
         this.machu = map.createLayer('machu', tilesetP1,0, 200);
-        this.fond = map.createLayer('Fond', tilesetP1, 0, 200);
         this.fond2 = map.createLayer('Fondforet', tilesetP1, 0, 200);
+        this.fond = map.createLayer('Fond', tilesetP1, 0, 200);
+
         this.fenetre = map.createLayer('Fenetre', tilesetP1, 0 , 200);
         this.plan5 = map.createLayer('Plan5', tilesetP1,0,200);
         this.plan4 = map.createLayer('Plan4', tilesetP1,0,200);
@@ -70,6 +71,7 @@ class scene extends Phaser.Scene {
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
         this.lumierefond = map.createLayer('LumièreFond',tilesetP1, 0,200);
+        this.lumieretemple = map.createLayer('LumièreTemple',tilesetP1, 0,200);
 
 
 
@@ -314,10 +316,12 @@ class scene extends Phaser.Scene {
                 break;
             case this.cursors.left.isDown:
                 this.player.moveLeft();
+                this.player.player.setOffset(20,0);
                 break;
 
             case this.cursors.right.isDown:
                 this.player.moveRight();
+                this.player.player.setOffset(20,0);
                 break;
 
             // case this.cursors.down.isDown:
