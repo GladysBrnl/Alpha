@@ -237,7 +237,8 @@ class scene extends Phaser.Scene {
         };
         this.tmo1 = this.physics.add.group({
             allowGravity: false,
-            immovable: true
+            immovable: true,
+
         });
 
 
