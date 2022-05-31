@@ -65,6 +65,7 @@ class scene extends Phaser.Scene {
         this.plan3 = map.createLayer('Plan3', tilesetP1, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
+        this.lumierefond = map.createLayer('LumièreFond',tilesetP1, 0,200);
 
 
 
@@ -225,7 +226,7 @@ class scene extends Phaser.Scene {
             lifespan: 4000,
             rotate: {min:90,max:360},
             angle: {min:90 , max: 360},
-            scale: {start: 2, end: 2},
+            scale: {start: 1, end: 1},
             gravityX: -300,
             gravityY:0,
 
