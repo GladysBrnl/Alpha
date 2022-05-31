@@ -76,6 +76,7 @@ class scene extends Phaser.Scene {
 
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
+        this.inti = map.createLayer('Inti', tilesetP1,0,200);
         this.plan = map.createLayer('Plan1bis', tilesetP1, 0, 200);
 
         //Parallax
