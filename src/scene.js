@@ -62,6 +62,8 @@ class scene extends Phaser.Scene {
         //this.platforms = map.createLayer('Platformes', tileset, 0, 200);
         this.fond = map.createLayer('Fond', tilesetP1, 0, 200);
         this.fond2 = map.createLayer('Fondforet', tilesetP1, 0, 200);
+        this.plan5 = map.createLayer('Plan5', tilesetP1,0,200);
+        this.plan4 = map.createLayer('Plan4', tilesetP1,0,200);
         this.plan3 = map.createLayer('Plan3', tilesetP1, 0, 200);
         this.plan2 = map.createLayer('Plan2', tilesetP1, 0, 200);
         this.plan1 = map.createLayer('Plan1', tilesetP1, 0, 200);
@@ -74,7 +76,7 @@ class scene extends Phaser.Scene {
 
         //Parallax
 
-        this.fond.scrollFactorX=1.035;
+        //this.fond.scrollFactorX=1.035;
         this.fond2.scrollFactorX=1.035;
         this.plan3.scrollFactorX=1.03;
         this.plan2.scrollFactorX=1.02;
