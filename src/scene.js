@@ -11,9 +11,9 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         this.load.image('move', 'assets/images/mouvable.png');
         this.load.image('save', 'assets/images/Save.png');
-        this.load.image('luminion','assets/images/Objlumi.png');
         this.load.image('luciole1', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
+        this.load.image('torche','assets/images/yellow2.png');
         this.load.atlas('flares','assets/images/flares.png','assets/images/flares.json');
         // At last image must be loaded with its JSON
         this.load.image('pic1', "assets/images/pic1.png");
@@ -255,6 +255,30 @@ class scene extends Phaser.Scene {
             this.atmo1SpriteFX.x = this.atmo1Sprite.x
             this.atmo1SpriteFX.y = this.atmo1Sprite.y
         });
+
+        //Torche
+        this.configFX4 = {
+                rotate: {min:0,max:280},
+                scale: {start: 2, end: 4},
+                alpha: { start: 0, end: 0.1 },
+                blendMode: Phaser.BlendModes.ADD,
+                speed:1000,
+                tint: 0xFFFFE0,
+            };
+            this.torche = this.physics.add.group({
+                allowGravity: false,
+                immovable: true
+            });
+
+            map.getObjectLayer('Torches').objects.forEach((torche) => {
+                this.torcheSprite = this.torche.create(torche.x, torche.y + 200 - torche.height, 'torche');
+                this.torcheSpriteFX = this.add.particles('torche')//On charge les particules à appliquer au layer
+                this.torcheSpriteFX.createEmitter(this.configFX4)
+                this.torcheSpriteFX.x = this.torcheSprite.x
+                this.torcheSpriteFX.y = this.torcheSprite.y
+            });
+
+
 
     }
 
