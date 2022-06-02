@@ -3,7 +3,7 @@ class Player {
     constructor(scene) {
         this.scene = scene
         this.pousse=false
-        this.player = this.scene.physics.add.sprite(17800, 2300, 'player');
+        this.player = this.scene.physics.add.sprite(1494, 3300, 'player');
         this.player.key=0
         this.player.body.setSize(70, 200);
 
