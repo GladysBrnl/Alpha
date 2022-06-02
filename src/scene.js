@@ -14,6 +14,7 @@ class scene extends Phaser.Scene {
         this.load.image('luciole1', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
         this.load.image('torche','assets/images/yellow2.png');
+        this.load.image('flamme1', 'assets/images/yellow3.png');
         this.load.atlas('flares','assets/images/flares.png','assets/images/flares.json');
         // At last image must be loaded with its JSON
         this.load.image('pic1', "assets/images/pic1.png");
@@ -143,44 +144,6 @@ class scene extends Phaser.Scene {
             //this.moveSprite.body.immovable=true
         });
 
-        //this.physics.add.collider(this.moves, this.collide)
-        this.player = new Player(this);
-
-        this.spikes = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-        map.getObjectLayer('Spikes').objects.forEach((spike) => {
-            const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'pic1').setOrigin(0);
-            spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
-            this.spikes.add(spikeSprite)
-        });
-
-        this.physics.add.collider(this.player.player, this.spikes, this.death, null, this);
-
-
-
-
-
-
-        /** groupe des saves*/
-        this.saves = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-        map.getObjectLayer('Save').objects.forEach((save) => {
-            const saveSprite = this.saves.create(save.x, save.y + 200 - save.height, 'save').setOrigin(0);
-            this.physics.add.overlap(this.player.player, this.saves, this.sauvegarde, null, this)
-        });
-
-
-
-
-        this.cursors = this.input.keyboard.createCursorKeys();
-        this.cameras.main.startFollow(this.player.player);
-        this.cameras.main.setRoundPixels(true);
-       // this.main.stopFollow();
-
         // Création de tout les emmiters
         // //Luciole1
         this.configFX1 = {
@@ -264,31 +227,96 @@ class scene extends Phaser.Scene {
 
         //Torche
         this.configFX4 = {
-                //rotate: {min:0,max:280},
-                 angle: {min:0 , max: 360},
-                scale: {start: 0.5, end: 1},
-                gravityX:0,
-                gravityY: -300,
-                alpha: { start: 0.5, end: 0 },
-                blendMode: Phaser.BlendModes.ADD,
-                speed:25,
-                tint: 0xFFFFE0,
-            };
-            this.torches = this.physics.add.group({
-                allowGravity: false,
-                immovable: true
-            });
-
-            map.getObjectLayer('Torches').objects.forEach((torches) => {
-                this.torcheSprite = this.torches.create(torches.x, torches.y + 200 - torches.height, 'torche');
-                this.torcheSpriteFX = this.add.particles('torche')//On charge les particules à appliquer au layer
-                this.torcheSpriteFX.createEmitter(this.configFX4)
-                this.torcheSpriteFX.x = this.torcheSprite.x
-                this.torcheSpriteFX.y = this.torcheSprite.y
-            });
-
+            //rotate: {min:0,max:280},
+            angle: {min:0 , max: 360},
+            scale: {start: 0.5, end: 1},
+            gravityX:0,
+            gravityY: -300,
+            alpha: { start: 0.5, end: 0 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:25,
+            tint: 0xFFFFE0,
+        };
+        this.torches = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('Torches').objects.forEach((torches) => {
+            this.torcheSprite = this.torches.create(torches.x, torches.y + 200 - torches.height, 'torche');
+            this.torcheSpriteFX = this.add.particles('torche')//On charge les particules à appliquer au layer
+            this.torcheSpriteFX.createEmitter(this.configFX4)
+            this.torcheSpriteFX.x = this.torcheSprite.x
+            this.torcheSpriteFX.y = this.torcheSprite.y
+        });
 
 
+        //Flammes1
+        this.configFX5 = {
+            //rotate: {min:0,max:280},
+            angle: {min:0 , max: 360},
+            scale: {start: 0.08, end: 0.1},
+            gravityX:100,
+            gravityY: -300,
+            alpha: { start: 5, end: 1 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:25,
+            tint: 0xFFFFE0,
+        };
+        this.flammes1 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('Flammes1').objects.forEach((flammes) => {
+            this.flammes1Sprite = this.flammes1.create(flammes.x, flammes.y + 200 - flammes.height, 'flamme1');
+            this.flammes1SpriteFX = this.add.particles('flamme1')//On charge les particules à appliquer au layer
+            this.flammes1SpriteFX.createEmitter(this.configFX5)
+            this.flammes1SpriteFX.x = this.flammes1Sprite.x
+            this.flammes1SpriteFX.y = this.flammes1Sprite.y
+        });
+
+
+
+        this.player = new Player(this);
+
+        this.spikes = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('Spikes').objects.forEach((spike) => {
+            const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'pic1').setOrigin(0);
+            spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
+            this.spikes.add(spikeSprite)
+        });
+
+        this.physics.add.collider(this.player.player, this.spikes, this.death, null, this);
+
+
+
+
+
+
+        /** groupe des saves*/
+        this.saves = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('Save').objects.forEach((save) => {
+            const saveSprite = this.saves.create(save.x, save.y + 200 - save.height, 'save').setOrigin(0);
+            this.physics.add.overlap(this.player.player, this.saves, this.sauvegarde, null, this)
+        });
+
+
+
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.cameras.main.startFollow(this.player.player);
+        this.cameras.main.setRoundPixels(true);
+       // this.main.stopFollow();
+
+
+
+
+        this.initKeyboard();
     }
 
     /**
@@ -296,6 +324,21 @@ class scene extends Phaser.Scene {
      * @param player
      * @param saves
      */
+
+    initKeyboard() {
+        let me = this;
+
+        this.input.keyboard.on('keydown', function (kevent) {
+            switch (kevent.keyCode) {
+
+                case Phaser.Input.Keyboard.KeyCodes.F:
+                    me.player.player.x = 3072;
+                    me.player.player.y = 1216;
+                    break;
+
+            }
+        })
+    }
 
     sauvegarde(player, saves) {
         this.currentSaveX = player.x
@@ -321,27 +364,6 @@ class scene extends Phaser.Scene {
         }
 
 
-
-
-        // if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
-        //     this.player.jump()
-        //     console.log("oui")
-        //     this.saut = true;
-        // }
-        // if (this.cursors.up.isUp ){
-        //     this.saut = false;
-        // }
-        // if (this.cursors.up.isDown && this.player.player.body.onFloor() && this.saut === false) {
-        //     this.player.jump()
-        // }
-        // if (this.cursors.left.isDown) {
-        //     this.player.moveLeft()
-        // } else if (this.cursors.right.isDown) {
-        //     this.player.moveRight()
-        // }
-        // else {
-        //     this.player.stop();
-        // }
         switch (true) {
 
             case (this.cursors.space.isDown || this.cursors.up.isDown) && this.player.player.body.onFloor():

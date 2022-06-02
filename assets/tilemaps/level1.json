@@ -346,6 +346,53 @@
         }, 
         {
          "draworder":"topdown",
+         "id":43,
+         "name":"Flammes1",
+         "objects":[
+                {
+                 "gid":54,
+                 "height":64,
+                 "id":662,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":18488,
+                 "y":1945.33333333333
+                }, 
+                {
+                 "gid":54,
+                 "height":64,
+                 "id":663,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":18465.3333333333,
+                 "y":2034
+                }, 
+                {
+                 "gid":54,
+                 "height":64,
+                 "id":664,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":18562.6666666667,
+                 "y":2018.66666666667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":41,
          "name":"Torches",
          "objects":[
@@ -360,18 +407,6 @@
                  "width":64,
                  "x":14500.1515151515,
                  "y":2013.24242424242
-                }, 
-                {
-                 "gid":53,
-                 "height":64,
-                 "id":622,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":18855.5151515152,
-                 "y":2343.57575757576
                 }, 
                 {
                  "gid":53,
@@ -4635,12 +4670,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextlayerid":43,
- "nextobjectid":662,
+ "nextlayerid":44,
+ "nextobjectid":667,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.1",
