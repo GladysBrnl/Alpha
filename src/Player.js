@@ -39,23 +39,20 @@ class Player {
             ],
             frameRate: 5,
             repeat: 0
-        })
-        /*
+        });
+
         this.scene.anims.create({
             key: 'idle',
-            frames: [{key: 'player', frame: 'robo_player_0'}],
-            frameRate: 10,
-
+            frames: [
+                {key: 'idle1'},
+                {key: 'idle2'},
+                {key: 'idle3'},
+                {key: 'idle4'},
+            ],
+            frameRate : 4,
+            repeat: -1
         });
-        this.scene.anims.create({
-            key: 'jump',
-            frames: [{key: 'player', frame: 'robo_player_1'}],
-            frameRate: 10,
-            repeat:-1,
 
-
-
-        });*/
         this.scene.physics.add.collider(this.player, this.scene.moves,this.force,null,this)
         this.scene.physics.add.collider(this.player, this.scene.doors,this.isKey,null,this)
         this.scene.physics.add.overlap(this.player, this.scene.key,this.getKey,null,this)
@@ -126,7 +123,7 @@ class Player {
     stop(){
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
-            //this.player.add.sprite('beaute')
+            this.player.play('idle',true)
 
             }
     }

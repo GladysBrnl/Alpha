@@ -33,6 +33,9 @@ class scene extends Phaser.Scene {
         for (let s=1; s<=9; s++){
             this.load.image('saut'+s,'assets/images/saut'+s+'.png')
         }
+        for (let i=1; i <= 4; i++){
+            this.load.image('idle'+i,'assets/images/idle'+i+'.png')
+        }
     }
 
 
