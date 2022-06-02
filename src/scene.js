@@ -11,9 +11,9 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         this.load.image('move', 'assets/images/mouvable.png');
         this.load.image('save', 'assets/images/Save.png');
-        this.load.image('luminion','assets/images/Objlumi.png');
         this.load.image('luciole1', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
+        this.load.image('torche','assets/images/yellow2.png');
         this.load.atlas('flares','assets/images/flares.png','assets/images/flares.json');
         // At last image must be loaded with its JSON
         this.load.image('pic1', "assets/images/pic1.png");
@@ -76,6 +76,7 @@ class scene extends Phaser.Scene {
 
 
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
+        this.inti = map.createLayer('Inti', tilesetP1,0,200);
         this.plan = map.createLayer('Plan1bis', tilesetP1, 0, 200);
 
         //Parallax
@@ -179,26 +180,28 @@ class scene extends Phaser.Scene {
 
         // Création de tout les emmiters
         // //Luciole1
-        // this.configFX1 = {
-        //     rotate: {min:0,max:280},
-        //     scale: {start: 2, end: 4},
-        //     alpha: { start: 0, end: 0.1 },
-        //     blendMode: Phaser.BlendModes.ADD,
-        //     speed:1000,
-        //     tint: 0xFFFFE0,
-        // };
-        // this.luciole1 = this.physics.add.group({
-        //     allowGravity: false,
-        //     immovable: true
-        // });
-        //
-        // map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
-        //     this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
-        //     this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
-        //     this.luciole1SpriteFX.createEmitter(this.configFX1)
-        //     this.luciole1SpriteFX.x = this.luciole1Sprite.x
-        //     this.luciole1SpriteFX.y = this.luciole1Sprite.y
-        // });
+        this.configFX1 = {
+            //rotate: {min:0,max:280},
+            lifespan : 300,
+            scale: {start: 0.45, end: 0.5},
+            alpha: { start: 0.5, end: 0 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:150,
+            tint: 0xFFFFE0,
+        };
+        this.luciole1 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+
+        map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
+            this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
+            this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
+            this.luciole1SpriteFX.createEmitter(this.configFX1)
+            this.luciole1SpriteFX.x = this.luciole1Sprite.x
+            this.luciole1SpriteFX.y = this.luciole1Sprite.y
+
+        });
 
         //Luciole2
 
@@ -255,6 +258,33 @@ class scene extends Phaser.Scene {
             this.atmo1SpriteFX.x = this.atmo1Sprite.x
             this.atmo1SpriteFX.y = this.atmo1Sprite.y
         });
+
+        //Torche
+        this.configFX4 = {
+                //rotate: {min:0,max:280},
+                 angle: {min:0 , max: 360},
+                scale: {start: 0.5, end: 1},
+                gravityX:0,
+                gravityY: -300,
+                alpha: { start: 0.5, end: 0 },
+                blendMode: Phaser.BlendModes.ADD,
+                speed:25,
+                tint: 0xFFFFE0,
+            };
+            this.torches = this.physics.add.group({
+                allowGravity: false,
+                immovable: true
+            });
+
+            map.getObjectLayer('Torches').objects.forEach((torches) => {
+                this.torcheSprite = this.torches.create(torches.x, torches.y + 200 - torches.height, 'torche');
+                this.torcheSpriteFX = this.add.particles('torche')//On charge les particules à appliquer au layer
+                this.torcheSpriteFX.createEmitter(this.configFX4)
+                this.torcheSpriteFX.x = this.torcheSprite.x
+                this.torcheSpriteFX.y = this.torcheSprite.y
+            });
+
+
 
     }
 
