@@ -14,7 +14,7 @@ class Menus extends  Phaser.Scene{
     create(){
         this.add.image(600,500,'Illu');
 
-        this.story = this.sound.add('background', {loop: true, volume:1});
+        this.story = this.sound.add('background', {loop: true, volume:0.05});
         if(this.temp === this.temp){
             this.story.play()
         }
