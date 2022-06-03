@@ -1,6 +1,8 @@
 class scene extends Phaser.Scene {
     function
-
+    constructor() {
+        super("intro");
+    }
     preload() {
         /**
          * on load nos images objets + la tilemap et le fichier json
@@ -332,8 +334,8 @@ class scene extends Phaser.Scene {
             switch (kevent.keyCode) {
 
                 case Phaser.Input.Keyboard.KeyCodes.F:
-                    me.player.player.x = 3072;
-                    me.player.player.y = 1216;
+                    me.player.player.x = 18294;
+                    me.player.player.y = 1117;
                     break;
 
             }
