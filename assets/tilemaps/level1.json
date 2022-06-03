@@ -528,6 +528,41 @@
                  "width":64,
                  "x":19361,
                  "y":1986
+                }, 
+                {
+                 "ellipse":true,
+                 "height":0,
+                 "id":687,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1239.39393939394,
+                 "y":3484.84848484848
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":44,
+         "name":"ObjetFin",
+         "objects":[
+                {
+                 "gid":26,
+                 "height":64,
+                 "id":688,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":19072,
+                 "y":2304
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4854,8 +4889,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":44,
- "nextobjectid":683,
+ "nextlayerid":45,
+ "nextobjectid":689,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.1",

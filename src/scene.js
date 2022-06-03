@@ -1,7 +1,7 @@
 class scene extends Phaser.Scene {
     function
     constructor() {
-        super("intro");
+        super("scene");
     }
     preload() {
         /**

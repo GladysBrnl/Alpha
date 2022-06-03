@@ -16,7 +16,7 @@ class Menus extends  Phaser.Scene{
         playbutton.setInteractive();
 
         playbutton.on("pointerup", () => {
-            this.scene.start("intro")
+            this.scene.start("introduction")
         })
         playbutton.on("pointerover",()=>{
             playbutton.setTexture('bouton2')
