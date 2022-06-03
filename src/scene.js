@@ -27,6 +27,10 @@ class scene extends Phaser.Scene {
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
 
+        //Load son
+
+        this.load.audio('background', 'assets/son')
+
 
         //Load anims
 
