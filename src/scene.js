@@ -13,7 +13,7 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         this.load.image('move', 'assets/images/mouvable.png');
         this.load.image('save', 'assets/images/Save.png');
-        this.load.image('objfin','assets/images/objetfin');
+        //this.load.image('objfin','assets/images/objetfin');
         this.load.image('particule', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
         this.load.image('torche','assets/images/yellow2.png');
@@ -82,7 +82,6 @@ class scene extends Phaser.Scene {
         this.lumieretemple = map.createLayer('LumièreTemple',tilesetP1, 0,200);
 
 
-        this.objetfin = map.createLayer('ObjetFin', tilesetP1, 0 ,200);
         this.feuilles = map.createLayer('Feuilles', tilesetP1, 0, 200);
         this.inti = map.createLayer('Inti', tilesetP1,0,200);
         this.plan = map.createLayer('Plan1bis', tilesetP1, 0, 200);
@@ -134,13 +133,6 @@ class scene extends Phaser.Scene {
             const keySprite = this.key.create(key.x, key.y +200- key.height, 'key').setOrigin(0).key=1;
         });
 
-        this.objetfin=this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        })
-        map.getObjectLayer('objfin').objects.forEach((key)=>{
-            const keySprite = this.Objfin.create(Objfin.x, Objfin.y +200- Objfin.height, 'objfin').setOrigin(0).key=1;
-        });
 
 
 
