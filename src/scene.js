@@ -17,6 +17,8 @@ class scene extends Phaser.Scene {
         this.load.image('particule', 'assets/images/blue.png');
         this.load.image('luciole2', 'assets/images/yellow.png');
         this.load.image('torche','assets/images/yellow2.png');
+
+        this.load.image('objfin','assets/images/objetfin.png');
         this.load.image('flamme1', 'assets/images/yellow3.png');
         this.load.atlas('flares','assets/images/flares.png','assets/images/flares.json');
         // At last image must be loaded with its JSON
@@ -150,28 +152,28 @@ class scene extends Phaser.Scene {
 
         // Création de tout les emmiters
         // //Luciole1
-        // this.configFX1 = {
-        //     //rotate: {min:0,max:280},
-        //     lifespan : 300,
-        //     scale: {start: 0.45, end: 0.5},
-        //     alpha: { start: 0.5, end: 0 },
-        //     blendMode: Phaser.BlendModes.ADD,
-        //     speed:150,
-        //     tint: 0xFFFFE0,
-        // };
-        // this.luciole1 = this.physics.add.group({
-        //     allowGravity: false,
-        //     immovable: true
-        // });
-        //
-        // map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
-        //     this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
-        //     this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
-        //     this.luciole1SpriteFX.createEmitter(this.configFX1)
-        //     this.luciole1SpriteFX.x = this.luciole1Sprite.x
-        //     this.luciole1SpriteFX.y = this.luciole1Sprite.y
-        //
-        // });
+        this.configFX1 = {
+            //rotate: {min:0,max:280},
+            lifespan : 300,
+            scale: {start: 0.45, end: 0.5},
+            alpha: { start: 0.5, end: 0 },
+            blendMode: Phaser.BlendModes.ADD,
+            speed:150,
+            tint: 0xFFFFE0,
+        };
+        this.luciole1 = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+
+        map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
+            this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
+            this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
+            this.luciole1SpriteFX.createEmitter(this.configFX1)
+            this.luciole1SpriteFX.x = this.luciole1Sprite.x
+            this.luciole1SpriteFX.y = this.luciole1Sprite.y
+
+        });
 
         //Luciole2
 
@@ -317,7 +319,16 @@ class scene extends Phaser.Scene {
         this.cameras.main.setRoundPixels(true);
        // this.main.stopFollow();
 
+        this.objetFin = this.physics.add.sprite(19136,2240, 'objfin').setScale(0.5);
+        //this.objetFin.body.setImmovable(true)
+        this.physics.add.collider(this.collide, this.objetFin);
+            this.objetFin.setGravity(false)
+        this.physics.add.collider(this.player.player, this.objetFin, () =>{
+            {
+                this.scene.start("fin")
 
+            }
+        })
 
 
         this.initKeyboard();
@@ -390,7 +401,10 @@ class scene extends Phaser.Scene {
                 this.player.stop();
             //this.marche.stop();
 
+
         }
+
+
     }
 
 
