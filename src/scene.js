@@ -152,28 +152,28 @@ class scene extends Phaser.Scene {
 
         // Création de tout les emmiters
         // //Luciole1
-        this.configFX1 = {
-            //rotate: {min:0,max:280},
-            lifespan : 300,
-            scale: {start: 0.45, end: 0.5},
-            alpha: { start: 0.5, end: 0 },
-            blendMode: Phaser.BlendModes.ADD,
-            speed:150,
-            tint: 0xFFFFE0,
-        };
-        this.luciole1 = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-
-        map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
-            this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
-            this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
-            this.luciole1SpriteFX.createEmitter(this.configFX1)
-            this.luciole1SpriteFX.x = this.luciole1Sprite.x
-            this.luciole1SpriteFX.y = this.luciole1Sprite.y
-
-        });
+        // this.configFX1 = {
+        //     //rotate: {min:0,max:280},
+        //     lifespan : 300,
+        //     scale: {start: 0.45, end: 0.5},
+        //     alpha: { start: 0.5, end: 0 },
+        //     blendMode: Phaser.BlendModes.ADD,
+        //     speed:150,
+        //     tint: 0xFFFFE0,
+        // };
+        // this.luciole1 = this.physics.add.group({
+        //     allowGravity: false,
+        //     immovable: true
+        // });
+        //
+        // map.getObjectLayer('Luciole').objects.forEach((luciole1) => {
+        //     this.luciole1Sprite = this.luciole1.create(luciole1.x, luciole1.y + 200 - luciole1.height, 'luciole1');
+        //     this.luciole1SpriteFX = this.add.particles('luciole1')//On charge les particules à appliquer au layer
+        //     this.luciole1SpriteFX.createEmitter(this.configFX1)
+        //     this.luciole1SpriteFX.x = this.luciole1Sprite.x
+        //     this.luciole1SpriteFX.y = this.luciole1Sprite.y
+        //
+        // });
 
         //Luciole2
 
