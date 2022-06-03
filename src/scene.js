@@ -356,7 +356,7 @@ class scene extends Phaser.Scene {
         player.x = this.currentSaveX
         player.y = this.currentSaveY;
 
-        console.log("pute");
+        console.log("hibou");
     }
 
     update() {
