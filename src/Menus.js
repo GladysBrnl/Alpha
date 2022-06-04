@@ -12,14 +12,14 @@ class Menus extends  Phaser.Scene{
         this.load.audio('background', 'assets/sons/background.mp3');
     }
     create(){
-        this.add.image(600,500,'Illu');
+        this.add.image(600,350,'Illu').setScale(0.8);
 
         this.story = this.sound.add('background', {loop: true, volume:0.05});
         if(this.temp === this.temp){
             this.story.play()
         }
 
-        let playbutton = this.add.image(600, 150, 'bouton');
+        let playbutton = this.add.image(600, 90, 'bouton').setScale(0.4);
         playbutton.setInteractive();
 
         playbutton.on("pointerup", () => {

@@ -11,6 +11,6 @@ class SceneFin extends Phaser.Scene{
 
     create(){
 
-        this.add.image(600,500,'Illu2');
+        this.add.image(610,400,'Illu2').setScale(0.7);
     }
 }

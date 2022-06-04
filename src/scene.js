@@ -319,7 +319,7 @@ class scene extends Phaser.Scene {
         this.cameras.main.setRoundPixels(true);
        // this.main.stopFollow();
 
-        this.objetFin = this.physics.add.sprite(19136,2240, 'objfin').setScale(0.5);
+        this.objetFin = this.physics.add.sprite(19236,2240, 'objfin').setScale(0.4);
         //this.objetFin.body.setImmovable(true)
         this.physics.add.collider(this.collide, this.objetFin);
             this.objetFin.setGravity(false)
